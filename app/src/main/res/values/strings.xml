@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">MeterReader</string>
+    <string name="title_activity_add_place">AddPlaceActivity</string>
+    <string name="name">Name</string>
+    <string name="description">Description</string>
+    <string name="add">Add</string>
+    <string name="cancel">Cancel</string>
+    <string name="gas">Gas</string>
+    <string name="water">Water</string>
+    <string name="electricity">Electricity</string>
+    <string name="title_activity_test">TestActivity</string>
+    <string name="take_photo">Take photo</string>
+    <string name="recognize">Recognize</string>
+    <string name="gallery">Gallery</string>
+    <string name="save">Save</string>
+
+</resources>

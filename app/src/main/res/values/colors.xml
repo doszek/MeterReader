@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#084937</color>
+    <color name="colorPrimaryDark">#0a5b44</color>
+    <color name="colorAccent">#00ccaa</color>
+
+
+
+
+
+
+
+    <color name="help_button_view">#ffcccccc</color>
+    <!-- help button view background color -->
+    <color name="help_view">#ff404040</color>
+    <!-- background color for entire help view -->
+    <color name="result_minor_text">#ffc0c0c0</color>
+    <!-- source language text/label text color. For example, "OCR English" -->
+    <color name="result_text">#ffffffff</color>
+    <!-- OCR result text color -->
+    <color name="result_view">#b0000000</color>
+    <!-- result view background color -->
+    <color name="status_text">#ffffffff</color>
+    <!-- status_view_top/status_view_bottom text color -->
+    <color name="status_top_text_background">#ffffffff</color>
+    <!-- status_view_top text background color -->
+    <color name="translation_text">#00ffd9</color>
+    <!-- translation text color -->
+    <color name="focus_box_corner">#ffffffff</color>
+    <!-- four corner elements for viewfinder -->
+    <color name="focus_box_frame">#ffd6d6d6</color>
+    <!-- viewfinder rectangle -->
+    <color name="focus_box_mask">#60000000</color>
+    <!-- viewfinder exterior darkened area -->
+
+
+
+
+
+
+    <color name="transparent">#00000000</color>
+    <color name="gray">#bcbcbc</color>
+    <color name="transgray">#55bcbcbc</color>
+    <color name="lightGray">#d3d3d3</color>
+    <color name="background_color">#33b5e5</color>
+    <color name="trans_background_color">#5533b5e5</color>
+    <color name="background_shadow_color">#0099cc</color>
+    <color name="action_bar_text">#ffffff</color>
+    <color name="white">#ffffff</color>
+    <color name="highlighted">#FFFFFF00</color>
+    <color name="transluscent_highlight">#4DFFFF00</color>
+    <color name="dark_gray">#A8A8A8</color>
+    <color name="red">#ff4444</color>
+    <color name="orange">#ff8800</color>
+
+
+
+</resources>
