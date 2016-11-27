@@ -1,5 +1,6 @@
 package pl.edu.agh.kt.aradoszek.meterreader.Activities;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -10,15 +11,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import pl.edu.agh.kt.aradoszek.meterreader.Data.Result;
 import pl.edu.agh.kt.aradoszek.meterreader.Data.User;
 import pl.edu.agh.kt.aradoszek.meterreader.R;
 import pl.edu.agh.kt.aradoszek.meterreader.Server.DataAssistant;
 import pl.edu.agh.kt.aradoszek.meterreader.Server.PostDataTask;
 
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity implements PostDataTask.PostDataTaskDelegate {
     private EditText emailEditText;
     private EditText passwordEditText;
     private EditText confirmPasswordEditText;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,14 +42,8 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
                 }
                 PostDataTask postDataTask = new PostDataTask(user);
+                postDataTask.delegate = RegisterActivity.this;
                 postDataTask.execute("http://178.62.107.140/api/createUser");
-                String result = postDataTask.getResult();
-                if (result.equals("")) {
-                    Toast.makeText(RegisterActivity.this, "Account created! You can login now", Toast.LENGTH_SHORT).show();
-                    finish();
-                } else {
-                    Toast.makeText(RegisterActivity.this, result, Toast.LENGTH_SHORT).show();
-                }
             }
         });
     }
@@ -93,5 +90,24 @@ public class RegisterActivity extends AppCompatActivity {
         return netInfo != null && netInfo.isConnected();
     }
 
+    @Override
+    public  void processStart() {
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Creating...");
+        progressDialog.show();
+    }
+
+    public void processFinish(String output) {
+        progressDialog.dismiss();
+        Result result = DataAssistant.getResultFromString(output);
+        if (result == null) {
+            return;
+        }
+
+        Toast.makeText(this, result.getMessage(), Toast.LENGTH_SHORT).show();
+        if (result.isSuccess()) {
+            finish();
+        }
+    }
 }
 

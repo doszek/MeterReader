@@ -24,13 +24,13 @@ import pl.edu.agh.kt.aradoszek.meterreader.Data.User;
 
 public class PostDataTask extends AsyncTask<String, Void, String> {
     private User user;
-    private String result = "";
+    public PostDataTaskDelegate delegate = null;
 
-    public String getResult() {
-        return result;
+    public interface PostDataTaskDelegate {
+        void processFinish(String output);
+
+        void processStart();
     }
-
-
 
     public PostDataTask(User user) {
         this.user = user;
@@ -39,6 +39,9 @@ public class PostDataTask extends AsyncTask<String, Void, String> {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
+        if (delegate != null) {
+            delegate.processStart();
+        }
     }
 
     @Override
@@ -56,6 +59,10 @@ public class PostDataTask extends AsyncTask<String, Void, String> {
     @Override
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
+
+        if (delegate != null) {
+            delegate.processFinish(result);
+        }
     }
 
     private String postData(String urlPath) throws IOException, JSONException {
@@ -99,9 +106,7 @@ public class PostDataTask extends AsyncTask<String, Void, String> {
                 bufferedWriter.close();
             }
         }
-
-        result = resultBuilder.toString();
-        return result;
+        return resultBuilder.toString();
 
     }
 }

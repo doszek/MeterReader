@@ -1,13 +1,11 @@
 package pl.edu.agh.kt.aradoszek.meterreader.Server;
 
-import android.app.ProgressDialog;
 import android.os.AsyncTask;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import pl.edu.agh.kt.aradoszek.meterreader.Activities.RegisterActivity;
 
 /**
  * Created by doszek on 13.11.2016.

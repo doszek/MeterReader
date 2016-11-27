@@ -1,13 +1,12 @@
 package pl.edu.agh.kt.aradoszek.meterreader.Server;
 
-import android.widget.Toast;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import pl.edu.agh.kt.aradoszek.meterreader.Data.Result;
 import pl.edu.agh.kt.aradoszek.meterreader.Data.User;
 
 /**
@@ -18,16 +17,14 @@ public class DataAssistant {
     public static JSONObject createUserJSONObject(User user)
     {
         JSONObject object = new JSONObject();
-        JSONObject object2 = new JSONObject();
         try {
-            object.put("password", user.getPassword());
             object.put("email", user.getEmail());
+            object.put("password", user.getPassword());
         } catch (JSONException e) {
             e.printStackTrace();
         }
         return object;
     }
-
 
     public static boolean isEmailValid(String email) {
         String regExpn =
@@ -47,6 +44,19 @@ public class DataAssistant {
             return true;
         else
             return false;
+    }
+
+    public static Result getResultFromString(String resultString) {
+        Result result = null;
+        try {
+            JSONObject jsonObject = new JSONObject(resultString);
+            boolean success =  jsonObject.getBoolean("success");
+            String message = jsonObject.getString("message");
+            result = new Result(success,message);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 
 }

@@ -15,11 +15,6 @@ import java.net.URL;
  */
 
 public  class GetDataTask extends AsyncTask<String, Void, String> {
-    private String result = "";
-
-    public String getResult() {
-        return result;
-    }
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
@@ -38,7 +33,6 @@ public  class GetDataTask extends AsyncTask<String, Void, String> {
     @Override
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
-        this.result = result;
     }
 
     private String getData(String urlPath) throws IOException {
