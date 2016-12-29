@@ -59,11 +59,6 @@ public class CameraEngine {
         try {
             camera.setPreviewDisplay(surfaceHolder);
             camera.setDisplayOrientation(90);
-            Camera.Parameters params = camera.getParameters();
-
-            params.setColorEffect(Camera.Parameters.EFFECT_NEGATIVE);
-            params.setColorEffect(Camera.Parameters.EFFECT_MONO);
-            camera.setParameters(params);
             camera.startPreview();
             on = true;
 

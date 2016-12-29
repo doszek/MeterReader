@@ -21,6 +21,13 @@ android {
             debuggable true
         }
     }
+    sourceSets{
+        main {
+            jni.srcDirs =[]
+            jniLibs.srcDirs = ['src/main/libs']
+        }
+    }
+
 }
 
 dependencies {
@@ -34,4 +41,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'org.mongodb:mongodb-driver:3.3.0'
     compile project(':libs:tess-two')
+    compile project(':openCVLibrary310')
 }

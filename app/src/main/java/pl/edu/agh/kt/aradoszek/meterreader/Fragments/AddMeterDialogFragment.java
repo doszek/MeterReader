@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import pl.edu.agh.kt.aradoszek.meterreader.Data.Meter;
 import pl.edu.agh.kt.aradoszek.meterreader.R;
@@ -50,7 +51,7 @@ public class AddMeterDialogFragment extends DialogFragment {
                         if (meter != null) {
                             listener.onDialogPositiveClick(AddMeterDialogFragment.this, meter);
                         } else {
-                            //display error on dialog
+                            Toast.makeText(getActivity(), "Error, item not added" , Toast.LENGTH_SHORT);
                         }
                     }
                 })
@@ -66,7 +67,10 @@ public class AddMeterDialogFragment extends DialogFragment {
         String name = nameTextView.getText().toString();
         String description = descriptionTextView.getText().toString();
         Meter.MeterType type = getTypeFromRadioGroup(dialogView, typeRadioGroup);
-        if (name != null && description != null && type != null) {
+        if (description == null)  {
+            description = "";
+        }
+        if (name != null) {
             return new Meter(name, description, type);
         } else {
             return null;
@@ -78,16 +82,15 @@ public class AddMeterDialogFragment extends DialogFragment {
         RadioButton selectedRadioButton = (RadioButton) view.findViewById(selectedId);
         String selectedtext = selectedRadioButton.getText().toString();
 
-        if (selectedtext == "Gas") {
+        if (selectedtext.equals("Gas")) {
             return Meter.MeterType.GAS;
         }
-        if (selectedtext == "Water") {
+        if (selectedtext.equals( "Water")) {
             return Meter.MeterType.WATER;
         }
-        if (selectedtext == "Electricity") {
+        if (selectedtext.equals("Electricity")) {
             return Meter.MeterType.ELECTRICITY;
         }
-
         return null;
     }
 
@@ -95,9 +98,9 @@ public class AddMeterDialogFragment extends DialogFragment {
     // Listener
     //================================================================================
     public interface AddMeterDialogListener {
-        public void onDialogPositiveClick(DialogFragment dialog, Meter meter);
+        void onDialogPositiveClick(DialogFragment dialog, Meter meter);
 
-        public void onDialogNegativeClick(DialogFragment dialog);
+        void onDialogNegativeClick(DialogFragment dialog);
     }
 
     @Override

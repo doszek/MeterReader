@@ -4,6 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -29,6 +30,7 @@ public class Place implements Parcelable {
         this.description = description;
         this.meters = meters;
     }
+
     public Place(String name, String description) {
         this.name = name;
         this.description = description;
@@ -67,10 +69,25 @@ public class Place implements Parcelable {
             return new Place[size];
         }
     };
+    //================================================================================
+    // Add
+    //================================================================================
+
+    public void addMeter (Meter meter) {
+        meters.add(meter);
+    }
+
+    public void addMeasurementToMeter(Meter meter, Measurement measurement) {
+        for (Meter m: meters) {
+            if(!m.getName().equals(meter.getName())) {continue;}
+            m.addMeasurement(measurement);
+        }
+    }
 
     //================================================================================
     // Accessors
     //================================================================================
+
     public String getName() {
         return name;
     }
@@ -83,8 +100,17 @@ public class Place implements Parcelable {
         return meters;
     }
 
-    public void setMeters(List<Meter> meters) {
-        this.meters = meters;
+    public List<Measurement> getMeasurements() {
+        List<Measurement> allMeasurements = new ArrayList<>();
+        for (Meter meter : meters) {
+            allMeasurements.addAll(meter.getMeasurments());
+        }
+        ///sort by date
+        Collections.sort(allMeasurements);
+
+        return allMeasurements;
     }
+
+
 
 }

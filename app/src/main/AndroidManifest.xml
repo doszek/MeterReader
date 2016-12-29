@@ -6,9 +6,10 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-feature android:name="android.hardware.camera.autofocus" />
-    <uses-permission android:name="android.permission.SET_DEBUG_APP"></uses-permission>
 
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.SET_DEBUG_APP" />
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -29,12 +30,10 @@
         </activity>
         <activity android:name=".Activities.PlacesListActivity" />
         <activity android:name=".Activities.MetersListActivity" />
-        <activity android:name=".Activities.GetMeasurmentActivity" />
+        <activity android:name=".Activities.GetMeasurementActivity" />
         <activity android:name=".Activities.RegisterActivity" />
-        <activity
-            android:name=".Activities.CameraActivity"
-            android:screenOrientation="portrait">
-        </activity>
+        <activity android:name=".Activities.CameraActivity" />
+        <activity android:name=".Activities.MeasurementHistoryActivity" />
     </application>
 
 </manifest>

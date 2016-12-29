@@ -6,13 +6,13 @@
 
     <SurfaceView
         android:id="@+id/camera_frame"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <pl.edu.agh.kt.aradoszek.meterreader.Camera.FocusBoxView
         android:id="@+id/focus_box"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <Button
         android:layout_width="wrap_content"

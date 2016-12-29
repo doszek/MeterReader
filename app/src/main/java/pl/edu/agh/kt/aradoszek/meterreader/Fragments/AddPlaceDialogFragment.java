@@ -11,6 +11,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +53,7 @@ public class AddPlaceDialogFragment extends DialogFragment {
                         if (place != null) {
                             listener.onDialogPositiveClick(AddPlaceDialogFragment.this, place);
                         } else {
-                            //display error
+                            Toast.makeText(getActivity(), "Error, item not added" , Toast.LENGTH_SHORT);
                         }
                     }
                 })
@@ -69,7 +70,10 @@ public class AddPlaceDialogFragment extends DialogFragment {
         String name = nameTextView.getText().toString();
         String description = descriptionTextView.getText().toString();
         List<Meter> meterList = new ArrayList<Meter>();
-        if (name != null && description != null) {
+        if (description == null) {
+            description = "";
+        }
+        if (name != null) {
             return new Place(name, description, meterList);
         } else {
             return null;

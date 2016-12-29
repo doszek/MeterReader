@@ -19,14 +19,38 @@ public class Meter implements Parcelable {
     private String name;
     private String description;
     private MeterType type;
-    private List<Measurment> measurments;
+    public List<Measurement> measurements;
 
     //================================================================================
     // Enums
     //================================================================================
 
     public enum MeterType implements Parcelable {
-        GAS, WATER, ELECTRICITY;
+        GAS("gas"),
+        WATER("water"),
+        ELECTRICITY("electricity");
+
+        private String name;
+
+        MeterType(String name) {
+            this.name = name;
+        }
+
+        public String toString() {
+            return name;
+        }
+
+        public static MeterType fromString(String name) {
+            if (name == null) {
+                return null;
+            }
+            for (MeterType m : MeterType.values()) {
+                if (name.equalsIgnoreCase(m.name)) {
+                    return m;
+                }
+            }
+            return null;
+        }
 
         public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
 
@@ -54,26 +78,26 @@ public class Meter implements Parcelable {
     // Constructors
     //================================================================================
 
-    public Meter(String name, String description, MeterType type, List<Measurment> measurments) {
+    public Meter(String name, String description, MeterType type, List<Measurement> measurements) {
         this.name = name;
         this.description = description;
         this.type = type;
-        this.measurments = measurments;
+        this.measurements = measurements;
     }
 
     public Meter(String name, String description, MeterType type) {
         this.name = name;
         this.description = description;
         this.type = type;
-        this.measurments = new ArrayList<Measurment>();
+        this.measurements = new ArrayList<>();
     }
 
     public Meter (Parcel parcel) {
         name = parcel.readString();
         description = parcel.readString();
         type = parcel.readParcelable(MeterType.class.getClassLoader());
-        measurments = new ArrayList<Measurment>() ;
-        parcel.readTypedList(measurments,Measurment.CREATOR);
+        measurements = new ArrayList<>() ;
+        parcel.readTypedList(measurements,Measurement.CREATOR);
     }
 
     //================================================================================
@@ -90,7 +114,7 @@ public class Meter implements Parcelable {
         dest.writeString(name);
         dest.writeString(description);
         dest.writeParcelable(type, flags);
-        dest.writeTypedList(measurments);
+        dest.writeTypedList(measurements);
     }
 
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
@@ -102,6 +126,14 @@ public class Meter implements Parcelable {
             return new Meter[size];
         }
     };
+
+    //================================================================================
+    // Add
+    //================================================================================
+
+    public void addMeasurement(Measurement measurement) {
+        measurements.add(measurement);
+    }
 
     //================================================================================
     // Accessors
@@ -119,9 +151,11 @@ public class Meter implements Parcelable {
         return type;
     }
 
-    public List<Measurment> getMeasurments() {
-        return measurments;
+    public List<Measurement> getMeasurments() {
+        return measurements;
     }
+
+
 }
 
 

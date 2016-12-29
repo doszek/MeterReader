@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import pl.edu.agh.kt.aradoszek.meterreader.Data.Model;
 import pl.edu.agh.kt.aradoszek.meterreader.Data.Result;
 import pl.edu.agh.kt.aradoszek.meterreader.Data.User;
 import pl.edu.agh.kt.aradoszek.meterreader.R;
@@ -28,6 +29,7 @@ public class LoginActivity extends AppCompatActivity implements PostDataTask.Pos
     private EditText emailEditText;
     private EditText passwordEditText;
     private ProgressDialog progressDialog;
+    private User user;
 
     //================================================================================
     // Create view
@@ -39,6 +41,12 @@ public class LoginActivity extends AppCompatActivity implements PostDataTask.Pos
         setContentView(R.layout.activity_login);
         emailEditText = (EditText) findViewById(R.id.email_edit_text);
         passwordEditText = (EditText) findViewById(R.id.password_edit_text);
+
+        ////////just for test/////////////////////////////////
+        emailEditText.setText("qwerty@gmail.com");
+        passwordEditText.setText("qwerty");
+        //////////////////////////////////////////////////////
+
         final Button loginButton = (Button) findViewById(R.id.login_button);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
@@ -47,7 +55,7 @@ public class LoginActivity extends AppCompatActivity implements PostDataTask.Pos
                     Toast.makeText(LoginActivity.this, "No internet connection!", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                User user = getUser();
+                user = getUser();
 
                 if (user == null) {
                     return;
@@ -103,11 +111,13 @@ public class LoginActivity extends AppCompatActivity implements PostDataTask.Pos
         progressDialog.dismiss();
         Result result = DataAssistant.getResultFromString(output);
         if (result == null) {
+            Toast.makeText(this, output , Toast.LENGTH_SHORT).show();
             return;
         }
 
         Toast.makeText(this, result.getMessage(), Toast.LENGTH_SHORT).show();
         if (result.isSuccess()) {
+            Model.getInstance().setUser(user);
             this.openPlacesList();
         }
     }

@@ -16,6 +16,9 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import pl.edu.agh.kt.aradoszek.meterreader.Data.Measurement;
+import pl.edu.agh.kt.aradoszek.meterreader.Data.Meter;
+import pl.edu.agh.kt.aradoszek.meterreader.Data.Place;
 import pl.edu.agh.kt.aradoszek.meterreader.Data.User;
 
 /**
@@ -23,7 +26,10 @@ import pl.edu.agh.kt.aradoszek.meterreader.Data.User;
  */
 
 public class PostDataTask extends AsyncTask<String, Void, String> {
-    private User user;
+    private User user = null;
+    private Place place = null;
+    private Meter meter =  null;
+    private Measurement measurement = null;
     public PostDataTaskDelegate delegate = null;
 
     public interface PostDataTaskDelegate {
@@ -34,6 +40,21 @@ public class PostDataTask extends AsyncTask<String, Void, String> {
 
     public PostDataTask(User user) {
         this.user = user;
+    }
+
+    public PostDataTask(User user, Place place) {
+        this.user = user;
+        this.place = place;
+    }
+
+    public PostDataTask(User user, Place place, Meter meter) {
+        this.user = user;
+        this.place = place;
+        this.meter = meter;
+    }
+
+    public PostDataTask(Measurement measurement) {
+        this.measurement = measurement;
     }
 
     @Override
@@ -65,6 +86,27 @@ public class PostDataTask extends AsyncTask<String, Void, String> {
         }
     }
 
+    private JSONObject createDataToSend (String urlPath) {
+        JSONObject dataToSend;
+
+        if (urlPath.contains("loginUser") && user != null) {
+            dataToSend = DataAssistant.createUserJSONObject(user);
+        } else if (urlPath.contains("createUser") && user != null) {
+            dataToSend = DataAssistant.createUserJSONObject(user);
+        } else if (urlPath.contains("getData") && user != null) {
+            dataToSend = DataAssistant.createUserJSONObject(user);
+        } else if (urlPath.contains("saveRead") && measurement != null) {
+            dataToSend = DataAssistant.createMeasurementJSONObject(measurement);
+        } else if (urlPath.contains("saveMeter") && meter != null) {
+            dataToSend = DataAssistant.createMeterJSONObject(user, place, meter);
+        } else if (urlPath.contains("saveLocalization") && place != null)  {
+            dataToSend = DataAssistant.createPlaceJSONObject(user, place);
+        } else {
+            dataToSend = null;
+        }
+        return dataToSend;
+    }
+
     private String postData(String urlPath) throws IOException, JSONException {
 
         StringBuilder resultBuilder = new StringBuilder();
@@ -72,10 +114,8 @@ public class PostDataTask extends AsyncTask<String, Void, String> {
         BufferedReader bufferedReader = null;
 
         try {
-            //Create data to send to server
-            JSONObject userToSend = DataAssistant.createUserJSONObject(user);
+            JSONObject dataToSend = createDataToSend(urlPath);
 
-            //Initialize and config request, then connect to server.
             URL url = new URL(urlPath);
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setReadTimeout(10000 /* milliseconds */);
@@ -85,13 +125,11 @@ public class PostDataTask extends AsyncTask<String, Void, String> {
             urlConnection.setRequestProperty("Content-Type", "application/json");// set header
             urlConnection.connect();
 
-            //Write data into server
             OutputStream outputStream = urlConnection.getOutputStream();
             bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream));
-            bufferedWriter.write(userToSend.toString());
+            bufferedWriter.write(dataToSend.toString());
             bufferedWriter.flush();
 
-            //Read data response from server
             InputStream inputStream = urlConnection.getInputStream();
             bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
             String line;
@@ -107,7 +145,6 @@ public class PostDataTask extends AsyncTask<String, Void, String> {
             }
         }
         return resultBuilder.toString();
-
     }
 }
 

@@ -303,7 +303,7 @@ PIX       *pixb, *pixd;
  *      Input:  pixs  (1 bpp)
  *              &angle   (<return> angle required to deskew, in degrees)
  *              &conf    (<return> confidence value is ratio max/min scores)
- *      Return: 0 if OK, 1 on error or if angle measurment not valid
+ *      Return: 0 if OK, 1 on error or if angle measurement not valid
  *
  *  Notes:
  *      (1) This is a simple high-level interface, that uses default
@@ -348,7 +348,7 @@ pixFindSkew(PIX        *pixs,
  *              reduction  (factor = 1, 2, 4 or 8)
  *              sweeprange   (half the full range; assumed about 0; in degrees)
  *              sweepdelta   (angle increment of sweep; in degrees)
- *      Return: 0 if OK, 1 on error or if angle measurment not valid
+ *      Return: 0 if OK, 1 on error or if angle measurement not valid
  *
  *  Notes:
  *      (1) This examines the 'score' for skew angles with equal intervals.
@@ -482,7 +482,7 @@ cleanup:
  *              sweeprange   (half the full range, assumed about 0; in degrees)
  *              sweepdelta   (angle increment of sweep; in degrees)
  *              minbsdelta   (min binary search increment angle; in degrees)
- *      Return: 0 if OK, 1 on error or if angle measurment not valid
+ *      Return: 0 if OK, 1 on error or if angle measurement not valid
  *
  *  Notes:
  *      (1) This finds the skew angle, doing first a sweep through a set
@@ -527,7 +527,7 @@ pixFindSkewSweepAndSearch(PIX        *pixs,
  *                            in degrees)
  *              sweepdelta   (angle increment of sweep; in degrees)
  *              minbsdelta   (min binary search increment angle; in degrees)
- *      Return: 0 if OK, 1 on error or if angle measurment not valid
+ *      Return: 0 if OK, 1 on error or if angle measurement not valid
  *
  *  Notes:
  *      (1) This finds the skew angle, doing first a sweep through a set
@@ -584,7 +584,7 @@ pixFindSkewSweepAndSearchScore(PIX        *pixs,
  *              sweepdelta   (angle increment of sweep; in degrees)
  *              minbsdelta   (min binary search increment angle; in degrees)
  *              pivot  (L_SHEAR_ABOUT_CORNER, L_SHEAR_ABOUT_CENTER)
- *      Return: 0 if OK, 1 on error or if angle measurment not valid
+ *      Return: 0 if OK, 1 on error or if angle measurement not valid
  *
  *  Notes:
  *      (1) See notes in pixFindSkewSweepAndSearchScore().
@@ -925,7 +925,7 @@ cleanup:
  *              confprior  (amount by which confidence of 90 degree rotated
  *                          result is reduced when comparing with unrotated
  *                          confidence value)
- *      Return: 0 if OK, 1 on error or if angle measurment not valid
+ *      Return: 0 if OK, 1 on error or if angle measurement not valid
  *
  *  Notes:
  *      (1) This searches for the skew angle, first in the range
