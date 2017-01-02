@@ -11,8 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import pl.edu.agh.kt.aradoszek.meterreader.Data.Result;
-import pl.edu.agh.kt.aradoszek.meterreader.Data.User;
+import pl.edu.agh.kt.aradoszek.meterreader.Model.Result;
+import pl.edu.agh.kt.aradoszek.meterreader.Model.User;
 import pl.edu.agh.kt.aradoszek.meterreader.R;
 import pl.edu.agh.kt.aradoszek.meterreader.Server.DataAssistant;
 import pl.edu.agh.kt.aradoszek.meterreader.Server.PostDataTask;

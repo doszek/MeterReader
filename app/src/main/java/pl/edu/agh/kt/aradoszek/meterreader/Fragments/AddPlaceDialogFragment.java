@@ -16,8 +16,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import pl.edu.agh.kt.aradoszek.meterreader.Data.Meter;
-import pl.edu.agh.kt.aradoszek.meterreader.Data.Place;
+import pl.edu.agh.kt.aradoszek.meterreader.Model.Meter;
+import pl.edu.agh.kt.aradoszek.meterreader.Model.Place;
 import pl.edu.agh.kt.aradoszek.meterreader.R;
 
 public class AddPlaceDialogFragment extends DialogFragment {

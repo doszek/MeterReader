@@ -13,10 +13,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import pl.edu.agh.kt.aradoszek.meterreader.Data.Measurement;
-import pl.edu.agh.kt.aradoszek.meterreader.Data.Meter;
-import pl.edu.agh.kt.aradoszek.meterreader.Data.Model;
-import pl.edu.agh.kt.aradoszek.meterreader.Data.Place;
+import pl.edu.agh.kt.aradoszek.meterreader.Model.Measurement;
+import pl.edu.agh.kt.aradoszek.meterreader.Model.Meter;
+import pl.edu.agh.kt.aradoszek.meterreader.Model.Data;
+import pl.edu.agh.kt.aradoszek.meterreader.Model.Place;
 import pl.edu.agh.kt.aradoszek.meterreader.OCR.TessOCR;
 import pl.edu.agh.kt.aradoszek.meterreader.R;
 import pl.edu.agh.kt.aradoszek.meterreader.Server.DataAssistant;
@@ -119,7 +119,7 @@ public class GetMeasurementActivity extends AppCompatActivity implements View.On
             double value = Double.parseDouble(text);
             String date = DataAssistant.getCurrentDate();
             Measurement measurement = new Measurement(value, date, currentMeter.getName());
-            Model.getInstance().addMeasurement(currentPlace, currentMeter, measurement);
+            Data.getInstance().addMeasurement(currentPlace, currentMeter, measurement);
             Toast.makeText(GetMeasurementActivity.this, "Measurement added!", Toast.LENGTH_SHORT).show();
 
             Intent returnMeterIntent = new Intent();

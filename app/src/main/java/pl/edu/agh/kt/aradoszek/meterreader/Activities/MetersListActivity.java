@@ -1,7 +1,6 @@
 package pl.edu.agh.kt.aradoszek.meterreader.Activities;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
@@ -16,10 +15,10 @@ import android.widget.Toast;
 import java.util.List;
 
 import pl.edu.agh.kt.aradoszek.meterreader.Adapters.MetersListAdapter;
-import pl.edu.agh.kt.aradoszek.meterreader.Data.Model;
+import pl.edu.agh.kt.aradoszek.meterreader.Model.Data;
 import pl.edu.agh.kt.aradoszek.meterreader.Fragments.AddMeterDialogFragment;
-import pl.edu.agh.kt.aradoszek.meterreader.Data.Meter;
-import pl.edu.agh.kt.aradoszek.meterreader.Data.Place;
+import pl.edu.agh.kt.aradoszek.meterreader.Model.Meter;
+import pl.edu.agh.kt.aradoszek.meterreader.Model.Place;
 import pl.edu.agh.kt.aradoszek.meterreader.R;
 
 public class MetersListActivity extends AppCompatActivity implements AddMeterDialogFragment.AddMeterDialogListener {
@@ -47,7 +46,7 @@ public class MetersListActivity extends AppCompatActivity implements AddMeterDia
         implementFloatingActionButton();
 
         currentPlace = getIntent().getExtras().getParcelable(PlacesListActivity.EXTRA_PLACE);
-        currentPlace = Model.getInstance().getPlace(currentPlace.getName());
+        currentPlace = Data.getInstance().getPlace(currentPlace.getName());
         metersList = currentPlace.getMeters();
         listView = (ListView) findViewById(R.id.meters_list);
         historyButton = (Button) findViewById(R.id.history_button);
@@ -106,7 +105,7 @@ public class MetersListActivity extends AppCompatActivity implements AddMeterDia
     }
 
     private void refreshData() {
-        currentPlace = Model.getInstance().getPlace(currentPlace.getName());
+        currentPlace = Data.getInstance().getPlace(currentPlace.getName());
         metersList = currentPlace.getMeters();
     }
 
@@ -116,7 +115,7 @@ public class MetersListActivity extends AppCompatActivity implements AddMeterDia
 
     @Override
     public void onDialogPositiveClick(DialogFragment dialog, Meter meter) {
-        Model.getInstance().addMeter(currentPlace, meter);
+        Data.getInstance().addMeter(currentPlace, meter);
         listAdapter.notifyDataSetChanged();
 
     }

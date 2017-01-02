@@ -1,6 +1,5 @@
 package pl.edu.agh.kt.aradoszek.meterreader.Server;
 
-import android.app.ProgressDialog;
 import android.os.AsyncTask;
 
 import org.json.JSONException;
@@ -16,10 +15,10 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import pl.edu.agh.kt.aradoszek.meterreader.Data.Measurement;
-import pl.edu.agh.kt.aradoszek.meterreader.Data.Meter;
-import pl.edu.agh.kt.aradoszek.meterreader.Data.Place;
-import pl.edu.agh.kt.aradoszek.meterreader.Data.User;
+import pl.edu.agh.kt.aradoszek.meterreader.Model.Measurement;
+import pl.edu.agh.kt.aradoszek.meterreader.Model.Meter;
+import pl.edu.agh.kt.aradoszek.meterreader.Model.Place;
+import pl.edu.agh.kt.aradoszek.meterreader.Model.User;
 
 /**
  * Created by doszek on 13.11.2016.

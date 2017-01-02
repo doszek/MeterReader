@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import pl.edu.agh.kt.aradoszek.meterreader.Data.Meter;
+import pl.edu.agh.kt.aradoszek.meterreader.Model.Meter;
 import pl.edu.agh.kt.aradoszek.meterreader.R;
 
 /**

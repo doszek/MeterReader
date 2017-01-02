@@ -13,9 +13,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import pl.edu.agh.kt.aradoszek.meterreader.Data.Model;
-import pl.edu.agh.kt.aradoszek.meterreader.Data.Result;
-import pl.edu.agh.kt.aradoszek.meterreader.Data.User;
+import pl.edu.agh.kt.aradoszek.meterreader.Model.Data;
+import pl.edu.agh.kt.aradoszek.meterreader.Model.Result;
+import pl.edu.agh.kt.aradoszek.meterreader.Model.User;
 import pl.edu.agh.kt.aradoszek.meterreader.R;
 import pl.edu.agh.kt.aradoszek.meterreader.Server.DataAssistant;
 import pl.edu.agh.kt.aradoszek.meterreader.Server.PostDataTask;
@@ -117,7 +117,7 @@ public class LoginActivity extends AppCompatActivity implements PostDataTask.Pos
 
         Toast.makeText(this, result.getMessage(), Toast.LENGTH_SHORT).show();
         if (result.isSuccess()) {
-            Model.getInstance().setUser(user);
+            Data.getInstance().setUser(user);
             this.openPlacesList();
         }
     }

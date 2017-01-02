@@ -1,4 +1,4 @@
-package pl.edu.agh.kt.aradoszek.meterreader.Data;
+package pl.edu.agh.kt.aradoszek.meterreader.Model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -6,7 +6,6 @@ import android.os.Parcelable;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Comparator;
 import java.util.Date;
 
 /**

@@ -1,21 +1,19 @@
-package pl.edu.agh.kt.aradoszek.meterreader.Data;
+package pl.edu.agh.kt.aradoszek.meterreader.Model;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import pl.edu.agh.kt.aradoszek.meterreader.Activities.LoginActivity;
-import pl.edu.agh.kt.aradoszek.meterreader.Activities.RegisterActivity;
 import pl.edu.agh.kt.aradoszek.meterreader.Server.PostDataTask;
 
 /**
  * Created by doszek on 16.10.2016.
  */
-public class Model {
+public class Data {
 
     //================================================================================
     // Properties
     //================================================================================
-    private static Model instance = null;
+    private static Data instance = null;
     private List<Place> placesList ;
     private User user;
 
@@ -23,7 +21,7 @@ public class Model {
     // Constructors
     //================================================================================
 
-    private Model() {
+    private Data() {
         placesList = new ArrayList<>();
     }
 
@@ -31,9 +29,9 @@ public class Model {
     // Singleton
     //================================================================================
 
-    public static Model getInstance() {
+    public static Data getInstance() {
         if (instance == null) {
-            instance = new Model();
+            instance = new Data();
         }
         return instance;
     }

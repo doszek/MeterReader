@@ -8,16 +8,15 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import pl.edu.agh.kt.aradoszek.meterreader.Data.Measurement;
-import pl.edu.agh.kt.aradoszek.meterreader.Data.Meter;
-import pl.edu.agh.kt.aradoszek.meterreader.Data.Place;
-import pl.edu.agh.kt.aradoszek.meterreader.Data.Result;
-import pl.edu.agh.kt.aradoszek.meterreader.Data.User;
+import pl.edu.agh.kt.aradoszek.meterreader.Model.Measurement;
+import pl.edu.agh.kt.aradoszek.meterreader.Model.Meter;
+import pl.edu.agh.kt.aradoszek.meterreader.Model.Place;
+import pl.edu.agh.kt.aradoszek.meterreader.Model.Result;
+import pl.edu.agh.kt.aradoszek.meterreader.Model.User;
 
 /**
  * Created by doszek on 16.11.2016.

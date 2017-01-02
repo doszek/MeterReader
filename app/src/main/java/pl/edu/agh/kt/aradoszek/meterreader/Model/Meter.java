@@ -1,4 +1,4 @@
-package pl.edu.agh.kt.aradoszek.meterreader.Data;
+package pl.edu.agh.kt.aradoszek.meterreader.Model;
 
 import android.os.Parcel;
 import android.os.Parcelable;

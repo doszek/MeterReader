@@ -11,10 +11,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import pl.edu.agh.kt.aradoszek.meterreader.Data.Meter;
+import pl.edu.agh.kt.aradoszek.meterreader.Model.Meter;
 import pl.edu.agh.kt.aradoszek.meterreader.R;
 
 public class AddMeterDialogFragment extends DialogFragment {

@@ -1,4 +1,4 @@
-package pl.edu.agh.kt.aradoszek.meterreader.Data;
+package pl.edu.agh.kt.aradoszek.meterreader.Model;
 
 /**
  * Created by doszek on 23.11.2016.
