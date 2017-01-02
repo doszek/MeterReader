@@ -176,8 +176,6 @@ public class DataAssistant {
         return measurement;
     }
 
-
-
     public static String getCurrentDate() {
         Calendar calendar = Calendar.getInstance();
         DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy");

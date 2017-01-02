@@ -31,6 +31,7 @@ public class GetMeasurementActivity extends AppCompatActivity implements View.On
     private Place currentPlace;
     private static final int REQUEST_TAKE_PHOTO = 1;
     private static final int REQUEST_ADD_MEASURE = 2;
+    static final String SAVED_IMAGE = "pl.agh.edu.agh.kt.aradoszek.SAVED_IMAGE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +54,7 @@ public class GetMeasurementActivity extends AppCompatActivity implements View.On
         saveButton.setOnClickListener(this);
 
         if (savedInstanceState != null) {
-            Bitmap bitmap = savedInstanceState.getParcelable("image");
+            Bitmap bitmap = savedInstanceState.getParcelable(SAVED_IMAGE);
             if (bitmap != null) {
                 photoImageView.setImageBitmap(bitmap);
             }
@@ -65,7 +66,7 @@ public class GetMeasurementActivity extends AppCompatActivity implements View.On
         Drawable drawable = photoImageView.getDrawable();
         if (drawable != null) {
             Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
-            outState.putParcelable("image", bitmap);
+            outState.putParcelable(SAVED_IMAGE, bitmap);
         }
         super.onSaveInstanceState(outState);
     }
@@ -104,9 +105,10 @@ public class GetMeasurementActivity extends AppCompatActivity implements View.On
             return;
         }
         if (requestCode == REQUEST_TAKE_PHOTO) {
-            Bitmap imageBitmap = data.getParcelableExtra("data");
-            photoImageView.setImageBitmap(imageBitmap);
-            performOcr(imageBitmap);
+            Bitmap image = data.getExtras().getParcelable(CameraActivity.IMAGE);
+            Bitmap filteredImage = data.getExtras().getParcelable(CameraActivity.FILTERED_IMAGE);
+            photoImageView.setImageBitmap(image);
+            performOcr(filteredImage);
         }
     }
 
