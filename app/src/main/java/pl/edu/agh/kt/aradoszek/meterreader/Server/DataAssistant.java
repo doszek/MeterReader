@@ -24,7 +24,7 @@ import pl.edu.agh.kt.aradoszek.meterreader.Model.User;
 
 public class DataAssistant {
 
-    public static JSONObject createUserJSONObject(User user) {
+    static JSONObject createUserJSONObject(User user) {
         JSONObject object = new JSONObject();
         try {
             object.put("email", user.getEmail());
@@ -35,7 +35,7 @@ public class DataAssistant {
         return object;
     }
 
-    public static JSONObject createPlaceJSONObject(User user, Place place) {
+    static JSONObject createPlaceJSONObject(User user, Place place) {
         JSONObject object = new JSONObject();
         try {
             object.put("email", user.getEmail());
@@ -47,7 +47,7 @@ public class DataAssistant {
         return object;
     }
 
-    public static JSONObject createMeterJSONObject(User user, Place place, Meter meter) {
+    static JSONObject createMeterJSONObject(User user, Place place, Meter meter) {
         JSONObject object = new JSONObject();
         try {
             object.put("email", user.getEmail());
@@ -61,7 +61,7 @@ public class DataAssistant {
         return object;
     }
 
-    public static JSONObject createMeasurementJSONObject(Measurement measurement) {
+     static JSONObject createMeasurementJSONObject(Measurement measurement) {
         JSONObject object = new JSONObject();
         try {
             object.put("meterName", measurement.getMeterName());
@@ -153,7 +153,7 @@ public class DataAssistant {
             JSONArray readsArray = object.getJSONArray("reads");
             for (int i = 0; i < readsArray.length(); i++) {
                 JSONObject measurementObject = readsArray.getJSONObject(i);
-                Measurement measurement = getMeasurementFromJson(measurementObject, meterName);
+                Measurement measurement = getMeasurementFromJSON(measurementObject, meterName);
                 measurementsList.add(measurement);
             }
             meter = new Meter(meterName, description, type, measurementsList);
@@ -163,7 +163,7 @@ public class DataAssistant {
         return meter;
     }
 
-    private static Measurement getMeasurementFromJson(JSONObject object, String meterName) {
+    private static Measurement getMeasurementFromJSON(JSONObject object, String meterName) {
         Measurement measurement = null;
         try {
             Double value =  object.getDouble("state");

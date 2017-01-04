@@ -1,9 +1,9 @@
 package pl.edu.agh.kt.aradoszek.meterreader.Activities;
 
-import android.app.ActionBar;
+
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Color;
+
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,24 +13,18 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
 
-import com.googlecode.leptonica.android.Binarize;
-import com.googlecode.leptonica.android.Pix;
-import com.googlecode.leptonica.android.ReadFile;
-import com.googlecode.leptonica.android.WriteFile;
-
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
 import org.opencv.android.Utils;
-import org.opencv.core.Core;
+
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfInt;
 import org.opencv.core.MatOfPoint;
-import org.opencv.core.MatOfPoint2f;
+
 import org.opencv.core.Point;
-import org.opencv.core.Rect;
-import org.opencv.core.RotatedRect;
+
 import org.opencv.core.Scalar;
 import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
@@ -43,8 +37,6 @@ import pl.edu.agh.kt.aradoszek.meterreader.Camera.FocusBoxView;
 import pl.edu.agh.kt.aradoszek.meterreader.Camera.Tools;
 import pl.edu.agh.kt.aradoszek.meterreader.R;
 
-import static org.opencv.imgproc.Imgproc.MORPH_RECT;
-import static org.opencv.imgproc.Imgproc.getStructuringElement;
 
 public class CameraActivity extends AppCompatActivity implements SurfaceHolder.Callback, View.OnClickListener,
         Camera.PictureCallback, Camera.ShutterCallback {
@@ -116,7 +108,6 @@ public class CameraActivity extends AppCompatActivity implements SurfaceHolder.C
             }
         }
     };
-
 
     @Override
     protected void onResume() {
@@ -195,7 +186,6 @@ public class CameraActivity extends AppCompatActivity implements SurfaceHolder.C
     private Bitmap filter(Bitmap bitmap) {
         Mat imgMat = new Mat();
         Utils.bitmapToMat(bitmap, imgMat);
-
         Imgproc.cvtColor(imgMat, imgMat, Imgproc.COLOR_RGB2GRAY);
 
         Mat bw = new Mat(imgMat.size(), CvType.CV_8U);
@@ -215,7 +205,7 @@ public class CameraActivity extends AppCompatActivity implements SurfaceHolder.C
         for (int i = 0; i < contours.size(); i++) {
             int height = Imgproc.boundingRect(contours.get(i)).height;
             int width = Imgproc.boundingRect(contours.get(i)).width;
-            if (height > HTHRESH && width > HTHRESH /2 ) {
+            if (height > HTHRESH && width > HTHRESH / 2 ) {
                 digits.addAll(contours.get(i).toList());
             }
         }

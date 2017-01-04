@@ -81,52 +81,12 @@ public class AddPlaceDialogFragment extends DialogFragment {
     }
 
     //================================================================================
-    // Text Watcher - TODO
-    //================================================================================
-
-    private void setTextWatchers(final AlertDialog dialog) {
-        dialog.getButton(Dialog.BUTTON_POSITIVE).setEnabled(false);
-        nameTextView.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if (s.length() == 0) {
-                    dialog.getButton(Dialog.BUTTON_POSITIVE).setEnabled(false);
-                } else {
-                    dialog.getButton(Dialog.BUTTON_POSITIVE).setEnabled(true);
-                }
-            }
-        });
-
-        descriptionTextView.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-            }
-        });
-    }
-
-    //================================================================================
     // Listener
     //================================================================================
 
     public interface AddPlaceDialogListener {
-        public void onDialogPositiveClick(DialogFragment dialog, Place place);
-        public void onDialogNegativeClick(DialogFragment dialog);
+        void onDialogPositiveClick(DialogFragment dialog, Place place);
+        void onDialogNegativeClick(DialogFragment dialog);
     }
 
     @Override
@@ -135,8 +95,7 @@ public class AddPlaceDialogFragment extends DialogFragment {
         try {
             listener = (AddPlaceDialogListener) context;
         } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString()
-                    + " must implement AddPlaceDialogListener");
+            throw new ClassCastException(context.toString() + " must implement AddPlaceDialogListener");
         }
     }
 }

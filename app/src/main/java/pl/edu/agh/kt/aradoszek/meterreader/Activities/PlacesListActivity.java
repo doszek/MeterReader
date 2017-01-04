@@ -29,7 +29,7 @@ public class PlacesListActivity extends AppCompatActivity implements AddPlaceDia
 
     static final String EXTRA_PLACE = "pl.agh.edu.agh.kt.aradoszek.EXTRA_PLACE";
     private List<Place> placesList;
-    private Data dataData;
+    private Data dataModel;
     private PlacesListAdapter arrayAdapter;
     private ProgressDialog progressDialog;
 
@@ -42,8 +42,8 @@ public class PlacesListActivity extends AppCompatActivity implements AddPlaceDia
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_places_list);
         implementFloatingActionButton();
-        dataData = Data.getInstance();
-        placesList = dataData.getPlacesList();
+        dataModel = Data.getInstance();
+        placesList = dataModel.getPlacesList();
         final ListView listView = (ListView) findViewById(R.id.places_list);
         arrayAdapter = new PlacesListAdapter(this, placesList);
 
@@ -60,7 +60,7 @@ public class PlacesListActivity extends AppCompatActivity implements AddPlaceDia
             }
         });
 
-        PostDataTask postDataTask = new PostDataTask(dataData.getUser());
+        PostDataTask postDataTask = new PostDataTask(dataModel.getUser());
         postDataTask.delegate = this;
         postDataTask.execute("http://178.62.107.140/api/getData");
     }
@@ -82,7 +82,7 @@ public class PlacesListActivity extends AppCompatActivity implements AddPlaceDia
 
     @Override
     public void onDialogPositiveClick(DialogFragment dialog, Place place) {
-        dataData.addPlace(place);
+        dataModel.addPlace(place);
         arrayAdapter.notifyDataSetChanged();
     }
 
@@ -95,7 +95,7 @@ public class PlacesListActivity extends AppCompatActivity implements AddPlaceDia
     public void processFinish(String output) {
         progressDialog.dismiss();
         List<Place> userData = DataAssistant.getUserDataFromString(output);
-        dataData.addAllUserData(userData);
+        dataModel.addAllUserData(userData);
         arrayAdapter.notifyDataSetChanged();
     }
 

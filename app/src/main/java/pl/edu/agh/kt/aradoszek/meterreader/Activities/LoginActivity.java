@@ -22,6 +22,28 @@ import pl.edu.agh.kt.aradoszek.meterreader.Server.PostDataTask;
 
 public class LoginActivity extends AppCompatActivity implements PostDataTask.PostDataTaskDelegate {
 
+    @Override
+    public void processFinish(String output) {
+        progressDialog.dismiss();
+        Result result = DataAssistant.getResultFromString(output);
+        if (result == null) {
+            Toast.makeText(this, output , Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        Toast.makeText(this, result.getMessage(), Toast.LENGTH_SHORT).show();
+        if (result.isSuccess()) {
+            Data.getInstance().setUser(user);
+            this.openPlacesList();
+        }
+    }
+    @Override
+    public  void processStart() {
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Authenticating...");
+        progressDialog.show();
+    }
+
     //================================================================================
     // Properties
     //================================================================================
@@ -106,25 +128,4 @@ public class LoginActivity extends AppCompatActivity implements PostDataTask.Pos
         return netInfo != null && netInfo.isConnected();
     }
 
-    @Override
-    public void processFinish(String output) {
-        progressDialog.dismiss();
-        Result result = DataAssistant.getResultFromString(output);
-        if (result == null) {
-            Toast.makeText(this, output , Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        Toast.makeText(this, result.getMessage(), Toast.LENGTH_SHORT).show();
-        if (result.isSuccess()) {
-            Data.getInstance().setUser(user);
-            this.openPlacesList();
-        }
-    }
-    @Override
-    public  void processStart() {
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Authenticating...");
-        progressDialog.show();
-    }
 }

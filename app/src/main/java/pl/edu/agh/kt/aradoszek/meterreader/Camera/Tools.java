@@ -19,12 +19,6 @@ public class Tools {
         return Bitmap.createBitmap(source, 0, 0, source.getWidth(), source.getHeight(), matrix, true);
     }
 
-    public static Bitmap preRotateBitmap(Bitmap source, float angle) {
-        Matrix matrix = new Matrix();
-        matrix.preRotate(angle);
-        return Bitmap.createBitmap(source, 0, 0, source.getWidth(), source.getHeight(), matrix, false);
-    }
-
     public static enum ScalingLogic {
         CROP, FIT
     }

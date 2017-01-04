@@ -47,7 +47,8 @@ public class GetMeasurementActivity extends AppCompatActivity implements View.On
         saveButton = (Button) findViewById(R.id.save_button);
         TextView header = (TextView) findViewById(R.id.measurement_header_text_view);
 
-        tessOCR = new TessOCR();
+        tessOCR = new TessOCR(getFilesDir(), getAssets());
+
 
         header.setText("Add measurement from " + currentMeter.getName());
         cameraButton.setOnClickListener(this);

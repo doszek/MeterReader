@@ -16,7 +16,6 @@ import java.util.List;
  */
 public class FocusBoxUtils {
 
-
     private static int MIN_PREVIEW_PIXELS = 470 * 320;
     private static int MAX_PREVIEW_PIXELS = 800 * 600;
 

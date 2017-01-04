@@ -12,10 +12,6 @@ public class CameraUtils {
 
     static final String TAG = "DBG_ " + CameraUtils.class.getName();
 
-    public static boolean deviceHasCamera(Context context) {
-        return context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA);
-    }
-
     public static Camera getCamera() {
         try {
             return Camera.open();
