@@ -64,11 +64,6 @@ public class LoginActivity extends AppCompatActivity implements PostDataTask.Pos
         emailEditText = (EditText) findViewById(R.id.email_edit_text);
         passwordEditText = (EditText) findViewById(R.id.password_edit_text);
 
-        ////////just for test/////////////////////////////////
-        emailEditText.setText("qwerty@gmail.com");
-        passwordEditText.setText("qwerty");
-        //////////////////////////////////////////////////////
-
         final Button loginButton = (Button) findViewById(R.id.login_button);
 
         loginButton.setOnClickListener(new View.OnClickListener() {

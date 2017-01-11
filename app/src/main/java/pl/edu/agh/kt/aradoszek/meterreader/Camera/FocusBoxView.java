@@ -12,10 +12,11 @@ import android.view.View;
 
 import pl.edu.agh.kt.aradoszek.meterreader.R;
 
-
 /**
- * Created by Fadi on 5/11/2014.
+ * Created by doszek on 16.11.2016.
  */
+
+
 public class FocusBoxView extends View {
 
     private static final int MIN_FOCUS_BOX_WIDTH = 50;

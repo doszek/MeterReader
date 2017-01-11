@@ -125,7 +125,6 @@ public class GetMeasurementActivity extends AppCompatActivity implements View.On
 
             Intent returnMeterIntent = new Intent();
             setResult(REQUEST_ADD_MEASURE, returnMeterIntent);
-
             finish();
         } else {
             Toast.makeText(GetMeasurementActivity.this, "You must enter a value!", Toast.LENGTH_SHORT).show();

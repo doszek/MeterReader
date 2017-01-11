@@ -200,7 +200,8 @@ public class CameraActivity extends AppCompatActivity implements SurfaceHolder.C
         List<MatOfPoint> contours = new ArrayList<>();
         List<Point> digits = new ArrayList<>();    // contours of the possible digits
         Mat hierarchy = new Mat();
-        Imgproc.findContours(bw2, contours, hierarchy, Imgproc.RETR_CCOMP, Imgproc.CHAIN_APPROX_SIMPLE, new Point(0,0));
+        Imgproc.findContours(bw2, contours, hierarchy, Imgproc.RETR_CCOMP,
+                Imgproc.CHAIN_APPROX_SIMPLE, new Point(0,0));
 
         for (int i = 0; i < contours.size(); i++) {
             int height = Imgproc.boundingRect(contours.get(i)).height;

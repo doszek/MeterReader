@@ -7,8 +7,9 @@ import android.view.SurfaceHolder;
 import java.io.IOException;
 
 /**
- * Created by Fadi on 5/11/2014.
+ * Created by doszek on 16.11.2016.
  */
+
 public class CameraEngine {
 
     static final String TAG = "MR_" + CameraUtils.class.getName();

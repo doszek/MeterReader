@@ -10,6 +10,9 @@ import android.graphics.Point;
 import android.graphics.Rect;
 import android.hardware.Camera;
 
+/**
+ * Created by doszek on 16.11.2016.
+ */
 
 public class Tools {
 

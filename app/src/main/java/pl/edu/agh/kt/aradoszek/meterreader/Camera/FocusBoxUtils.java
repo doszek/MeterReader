@@ -12,8 +12,9 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
- * Created by Fadi on 5/11/2014.
+ * Created by doszek on 16.11.2016.
  */
+
 public class FocusBoxUtils {
 
     private static int MIN_PREVIEW_PIXELS = 470 * 320;

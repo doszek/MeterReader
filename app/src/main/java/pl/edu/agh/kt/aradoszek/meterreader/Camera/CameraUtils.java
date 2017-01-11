@@ -1,13 +1,12 @@
 package pl.edu.agh.kt.aradoszek.meterreader.Camera;
 
-import android.content.Context;
-import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.util.Log;
 
 /**
- * Created by Fadi on 5/11/2014.
+ * Created by doszek on 16.11.2016.
  */
+
 public class CameraUtils {
 
     static final String TAG = "DBG_ " + CameraUtils.class.getName();

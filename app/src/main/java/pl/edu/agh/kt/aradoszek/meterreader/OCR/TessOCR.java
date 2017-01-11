@@ -12,6 +12,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+/**
+ * Created by doszek on 16.11.2016.
+ */
 
 public class TessOCR {
 	private TessBaseAPI tessBaseAPI;
@@ -23,9 +26,7 @@ public class TessOCR {
 		this.assetManager = assetManager;
 		dataPath = filesDir + "/tesseract/";
 		checkFile(new File(dataPath + "tessdata/"));
-
 		String language = "eng";
-
 		tessBaseAPI.setPageSegMode(TessBaseAPI.OEM_TESSERACT_CUBE_COMBINED);
 		tessBaseAPI.setPageSegMode(TessBaseAPI.PageSegMode.PSM_AUTO_OSD);
 		tessBaseAPI.setPageSegMode(TessBaseAPI.PageSegMode.PSM_SINGLE_LINE);
